@@ -552,7 +552,7 @@ class PdfViewerController extends TransformationController {
 
   /// Clamp horizontal scroll position into valid range.
   double clampX(double x, double zoomRatio) =>
-      x.clamp(0.0, getScrollableMaxX(zoomRatio));
+      x.clamp(0.0, getScrollableMaxX(zoomRatio).abs());
 
   /// Clamp vertical scroll position into valid range.
   double clampY(double y, double zoomRatio) =>
