@@ -1593,7 +1593,8 @@ class PdfViewerState extends State<PdfViewer>
         // no real-size overlay needed; use preview
         page.realSize.value = null;
       } else {
-        // render real-size overlay
+        try {
+          // render real-size overlay
         final offset = part.topLeft - pageRectZoomed.topLeft;
         final rect = Rect.fromLTWH(
             offset.dx / r, offset.dy / r, part.width / r, part.height / r);
@@ -1614,6 +1615,7 @@ class PdfViewerState extends State<PdfViewer>
           allowAntialiasingIOS: widget.params?.allowAntialiasingIOS ?? true,
         );
         page._updateRealSizeOverlay(_RealSize(rect, tex));
+        } catch(e){}
       }
     }
   }
